@@ -10,10 +10,11 @@
 #在 main.js 中引入
 
 #import AlertUi from 'alert-ui-demo'
-#import 'alert-ui-demo/lib/alert-ui.css' 引入 alert 样式（采用内两样式后，不再需要引入样式）
+#import 'alert-ui-demo/lib/alert-ui.css' 本示例样式采用内联样式，所以不再需要引入该样式
 
 #Vue.use(AlertUi)
-注：弹层兼容 Vue3 时，需要将 vue.config.js 中 css 强制使用内联样式
+注：此处需要注意的是，采用内联样式是为了兼容 Vue cli3 项目，引入样式不生效果问题
+即将 vue.config.js 中 css 强制使用内联样式
 css: {
 extract: false
 }
