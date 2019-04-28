@@ -13,7 +13,10 @@
 #import 'alert-ui-demo/lib/alert-ui.css' 引入 alert 样式（采用内两样式后，不再需要引入样式）
 
 #Vue.use(AlertUi)
-注：弹层兼 Vue3 中测试时，发现样式不生效，仅供参考(解决方案： vue.config.js 中 css 强制使用内联样式)
+注：弹层兼容 Vue3 时，需要将 vue.config.js 中 css 强制使用内联样式
+css: {
+extract: false
+}
 
 具体使用方式：
 此 demo 提供 alert 和 confirm 两种方式的提醒
