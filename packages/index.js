@@ -12,7 +12,7 @@ const install = function(Vue) {
   this.installed = true;
 };
 export default {
-  version: '1.0.25',
+  version: '1.1.1',
   Alert,
   Confirm,
   Loading,

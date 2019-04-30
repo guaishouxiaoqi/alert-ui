@@ -1,4 +1,4 @@
-#简单描述
+#alert-ui-demo 实现基本的全局 alert、confirm、loading 弹层
 
 #简单的 alert-ui-demo
 
@@ -20,17 +20,18 @@ extract: false
 }
 
 具体使用方式：
-此 demo 提供 alert 和 confirm 两种方式的提醒
-通过上图引用后，可以直接在需要的地方调用 this.$alert()或者this.$confirm();
+alert-ui-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.1 版本新添加了全局 loading 组件，可以实现两种不同风格 loading，可以根据需求定制一些简单 loading 样式;
+在需要的地方调用 this.$alert()或者this.$confirm();
+在需要的地方引入全局组件<loadings></loadings>
 
-#1、alert 中的参数可以为字符串、对象两种方式
+#alert 中的参数可以为字符串、对象两种方式
 
 #this.$alert('alert 提示')、
 #this.$alert({message:'alert 提示内容',type:'default',time:3000})
 
 <!-- 其中 type、time 非必填项 type 提供：default、warning、success 三种类型 -->
 
-#2、confirm 的参数为对象形式
+#confirm 的参数为对象形式
 this.$confirm({})具体参数如下
 this.$confirm({
 title:'标题',
