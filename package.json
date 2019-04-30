@@ -4,8 +4,7 @@
   "private": false,
   "scripts": {
     "lib": "vue-cli-service build --target lib --name alert-ui ./packages/index.js",
-    "start": "npm run lib",
-    "del": "npm unpublish --force"
+    "start": "npm run lib"
   },
   "main": "lib/alert-ui.common.js",
   "files": [

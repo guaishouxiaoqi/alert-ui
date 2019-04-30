@@ -80,8 +80,8 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-@import "../../style/mixin.scss";
-@import "../../style/reset.scss";
+// @import "../../style/mixin.scss";
+// @import "../../style/reset.scss";
 @import "../../style/common.scss";
 $close: "data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA60lEQVRIS8WWSw4CIQyG+x/AAwDnM8bElfEMrnRWJsZ4QPZ6gBpGiQR5FAnKcqD/19IHA2PMnpk3zHy11u6IiKlvQSl1ALAEcILW+kZEC6fJzBdr7boD4sTPAFYvH+/uwxHA1jvdAYnFncMTiCi10RpJVsMB3OqBFG094FtI1bEQ0Aqpis+CiYqUGErOPO8+U/IlAYpKsVjeOUD2uuaNd51Xe6cESELCiCU9UwNkIRLxUg5CRz/y0TJWahEkxVvGyt+SPLRMJU0kOZNsNLGhdED+bNi1eB5Pl+q47hH3sPyDM/zJHP7oj/5teQCjAGAI2oXWngAAAABJRU5ErkJggg==";
 .container {

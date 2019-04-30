@@ -1,6 +1,7 @@
 import Confirm from './confirm';
 import Alert from './alert';
-let arr = [Confirm, Alert];
+import Loading from './loading';
+let arr = [Confirm, Alert, Loading];
 const install = function(Vue) {
   if (this.installed) return;
   arr.forEach(item => {
@@ -14,5 +15,6 @@ export default {
   version: '1.0.18',
   Alert,
   Confirm,
+  Loading,
   install
 };
