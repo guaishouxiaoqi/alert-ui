@@ -1,6 +1,6 @@
 {
   "name": "alert-ui-demo",
-  "version": "1.0.22",
+  "version": "1.0.25",
   "private": false,
   "scripts": {
     "lib": "vue-cli-service build --target lib --name alert-ui ./packages/index.js",

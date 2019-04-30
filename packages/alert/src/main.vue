@@ -56,8 +56,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-// @import "../../style/mixin.scss";
-// @import "../../style/reset.scss";
 .container {
   position: fixed;
   width: 100%;
