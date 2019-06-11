@@ -5,7 +5,7 @@
       <div class="pre-month"
            @click="changeMonth('pre')"></div>
       <div class="current-time"
-           @click="changeMonth('cur')">{{fullYear}}年{{fullMonth+1}}月,{{isMobile}}</div>
+           @click="changeMonth('cur')">{{fullYear}}年{{fullMonth+1}}月</div>
       <div class="next-month"
            @click="changeMonth('next')"></div>
     </div>
