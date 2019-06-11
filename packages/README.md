@@ -54,3 +54,35 @@ size 定义 loading 图大小,目前支持三种 small、middle、large ，默�
 
 ####参数 pointColor 和参数 pointType ####
 pointColor 和 pointType 定义 loading 的颜色和样式显示，当 svgType='point'时，这两个此参数可用,其中 pointColor：目前支持 default、gray、dark、linear，默认是 default，pointType：目前支持 small、middle、large、ease、linear，默认为 middle
+
+#####v1.1.15 版本新增 calendar 组件 ####
+
+新增 calendar 日历组件，在需要的页面添加组件
+
+<!-- <calendar></calendar> -->
+
+####canendar 组件的可选参数如下（所有参数非必填项）####
+
+####参数 language ####
+language 参数用于显示中文还是英文日期
+
+####参数 canSelected ####
+canSelected(日历中的日期是否可以选择区间，默认为 false 不可选)
+
+####参数 raws ####
+raws（日历显示的行数，默认为 5 行，最小为 5 行）
+(4)、参数 rangeMonth（可选择的最大日期区间），需设置 canSelected 为 true
+rangeMonth 配合 canSelected 使用，可选择日期区间
+
+####参数 dateType ####
+dateType 参数定义了回调函数 handleSelect 返回的日期格式，默认为'YYYY-MM-DD'，
+返回的日期数组中日期的格式为'YYYY-MM-DD'
+
+####参数 clean ####
+clean 参数用于点击日历外的日期时，是否清楚已选中的日期区间，默认为 false
+
+####回调函数 handleMax ####
+handleMax 回调函数用于返回选择的日期区间超过设置的 rangeMonth 值
+
+####回调函数 handleSelect，需设置 canSelected 为 true ####
+handleSelect 回调函数用于返回点后日期后返回对应的选择日期区间数组
