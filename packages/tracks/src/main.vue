@@ -279,7 +279,7 @@ export default {
       } else if (window.attachEvent) {
         window.attachEvent("resize", this.initEventFun);
       } else {
-        window.onscroll = this.initEventFun;
+        window.onresize = this.initEventFun;
       }
     },
     removeResizeEvent() {

@@ -21,7 +21,7 @@ const install = function(Vue) {
   });
 };
 export default {
-  version: '1.1.24',
+  version: '1.1.26',
   Alert,
   Confirm,
   Loading,
