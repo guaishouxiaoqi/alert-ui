@@ -5,6 +5,7 @@
          v-if="isShow"
          @click="hide">
       <div class='main'
+           :class="{'is-pc':!isMobile}"
            @click.stop>
         <div class="close"
              @click="handleCancel"></div>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import { checkDevice } from "@/common/tool";
 export default {
   name: "confirm",
   props: [],
@@ -40,7 +42,8 @@ export default {
         default: "default-item",
         scale: "scale-item"
       },
-      animateType: "default"
+      animateType: "default",
+      isMobile: null
     };
   },
   watch: {},
@@ -53,28 +56,55 @@ export default {
     }
   },
   methods: {
+    checkDevice() {
+      this.isMobile = checkDevice();
+    },
     handleCancel() {
       this.isShow = false;
-      console.log("--123--cancel");
+      console.log("cancel");
     },
     handleConfirm() {
       this.isShow = false;
       this.confirm();
     },
     confirm() {
-      console.log("--123--confirm");
+      console.log("confirm");
     },
     show() {
       this.isShow = true;
     },
     hide() {
       this.isShow = false;
+    },
+    addResizeEvent() {
+      this.checkDevice();
+      if (window.addEventListener) {
+        window.addEventListener("resize", this.checkDevice);
+      } else if (window.attachEvent) {
+        window.attachEvent("resize", this.checkDevice);
+      } else {
+        window.onresize = this.checkDevice;
+      }
+    },
+    removeResizeEvent() {
+      if (window.removeEventListener) {
+        window.removeEventListener("resize", this.checkDevice);
+      } else if (window.detachEvent) {
+        window.detachEvent("resize", this.checkDevice);
+      } else {
+        window.onresize = null;
+      }
     }
   },
-  created() {},
+  created() {
+    this.addResizeEvent();
+  },
   mounted() {},
   activated() {},
   deactivated() {},
+  beforeDestroy() {
+    this.removeResizeEvent();
+  },
   destroyed() {}
 };
 </script>
@@ -148,6 +178,34 @@ $close: "../../img/icon_close.png";
         background: $Blue;
         color: $LineColor;
         font-weight: 500;
+      }
+    }
+    &.is-pc {
+      min-width: 320px;
+      padding: 20px 10px;
+      border-radius: 6px;
+      .close {
+        width: 14px;
+        height: 14px;
+        right: 10px;
+        top: 10px;
+      }
+      .confirm-title {
+        font-size: 16px;
+      }
+      .confirm-content {
+        padding: 15px 15px 0;
+        font-size: 14px;
+        border-radius: 6px;
+      }
+      .option-btn {
+        padding: 25px 15px 5px;
+        div {
+          padding: 6px 25px;
+          font-size: 14px;
+          font-weight: 400;
+          border-radius: 20px;
+        }
       }
     }
   }

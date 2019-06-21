@@ -571,13 +571,6 @@ export default {
   activated() {},
   deactivated() {
     this.clearResize();
-    console.log("--deactived--");
-  },
-  beforeDestroy(vm) {
-    console.log("--beforeDestroy--", vm);
-  },
-  destroyed(vm) {
-    console.log("--destroyed--", vm);
   }
 };
 </script>
@@ -586,11 +579,6 @@ export default {
 $icon_left: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUyICg2Njg2OSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+amlhbnRvdV96dW88L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iamlhbnRvdV96dW8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJqaWFudG91X3NoYW5nIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiPjwvcmVjdD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik01LjYyNDk3NjE4LDcuODU2MDkxNDMgTDkuODUyNjI0NzQsMy4xNjA4MTIwMyBDMTAuMDI1ODUxNiwyLjk2ODQyNDEyIDEwLjMyMjI0MDksMi45NTI4OTEwMSAxMC41MTQ2Mjg4LDMuMTI2MTE3ODcgQzEwLjcwNzAxNjgsMy4yOTkzNDQ3MyAxMC43MjI1NDk5LDMuNTk1NzM0MDYgMTAuNTQ5MzIzLDMuNzg4MTIxOTggTDUuOTkxMDc3NjMsOC44NTA1NjYzNSBDNS44OTQyODY1Myw4Ljk1ODA2Mzc1IDUuNzU5MDQzNDYsOS4wMTAzNDYxMyA1LjYyNDk3NjE4LDkuMDA1MzM2NjkgQzUuNDkwOTA4OTEsOS4wMTAzNDYxMyA1LjM1NTY2NTgzLDguOTU4MDYzNzUgNS4yNTg4NzQ3NCw4Ljg1MDU2NjM1IEwwLjcwMDYyOTM1MywzLjc4ODEyMTk4IEMwLjUyNzQwMjQ5NiwzLjU5NTczNDA2IDAuNTQyOTM1NjAyLDMuMjk5MzQ0NzMgMC43MzUzMjM1MTgsMy4xMjYxMTc4NyBDMC45Mjc3MTE0MzQsMi45NTI4OTEwMSAxLjIyNDEwMDc3LDIuOTY4NDI0MTIgMS4zOTczMjc2MywzLjE2MDgxMjAzIEw1LjYyNDk3NjE4LDcuODU2MDkxNDMgWiIgaWQ9ImRvd24iIGZpbGwtb3BhY2l0eT0iMC40NSIgZmlsbD0iIzAwMDAwMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNS42MjQ5NzYsIDYuMDA1Njg5KSByb3RhdGUoOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTUuNjI0OTc2LCAtNi4wMDU2ODkpICI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=";
 $icon_right: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUyICg2Njg2OSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+amlhbnRvdV95b3U8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iamlhbnRvdV95b3UiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYuMDAwMDAwLCA2LjAwMDAwMCkgc2NhbGUoLTEsIDEpIHRyYW5zbGF0ZSgtNi4wMDAwMDAsIC02LjAwMDAwMCkgIj4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIj48L3JlY3Q+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik01LjYyNDk3NjE4LDcuODU2MDkxNDMgTDkuODUyNjI0NzQsMy4xNjA4MTIwMyBDMTAuMDI1ODUxNiwyLjk2ODQyNDEyIDEwLjMyMjI0MDksMi45NTI4OTEwMSAxMC41MTQ2Mjg4LDMuMTI2MTE3ODcgQzEwLjcwNzAxNjgsMy4yOTkzNDQ3MyAxMC43MjI1NDk5LDMuNTk1NzM0MDYgMTAuNTQ5MzIzLDMuNzg4MTIxOTggTDUuOTkxMDc3NjMsOC44NTA1NjYzNSBDNS44OTQyODY1Myw4Ljk1ODA2Mzc1IDUuNzU5MDQzNDYsOS4wMTAzNDYxMyA1LjYyNDk3NjE4LDkuMDA1MzM2NjkgQzUuNDkwOTA4OTEsOS4wMTAzNDYxMyA1LjM1NTY2NTgzLDguOTU4MDYzNzUgNS4yNTg4NzQ3NCw4Ljg1MDU2NjM1IEwwLjcwMDYyOTM1MywzLjc4ODEyMTk4IEMwLjUyNzQwMjQ5NiwzLjU5NTczNDA2IDAuNTQyOTM1NjAyLDMuMjk5MzQ0NzMgMC43MzUzMjM1MTgsMy4xMjYxMTc4NyBDMC45Mjc3MTE0MzQsMi45NTI4OTEwMSAxLjIyNDEwMDc3LDIuOTY4NDI0MTIgMS4zOTczMjc2MywzLjE2MDgxMjAzIEw1LjYyNDk3NjE4LDcuODU2MDkxNDMgWiIgaWQ9ImRvd24iIGZpbGwtb3BhY2l0eT0iMC40NSIgZmlsbD0iIzAwMDAwMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNS42MjQ5NzYsIDYuMDA1Njg5KSByb3RhdGUoOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTUuNjI0OTc2LCAtNi4wMDU2ODkpICI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+";
 .calendar-container {
-  .current-time {
-    text-align: center;
-    font-size: rem(36);
-    cursor: pointer;
-  }
   .change-month-area {
     display: flex;
     padding: rem(20) rem(36);
@@ -607,6 +595,11 @@ $icon_right: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
       font-weight: 500;
       &.cur-month {
         margin: 0 rem(20);
+      }
+      &.current-time {
+        text-align: center;
+        font-size: rem(36);
+        cursor: pointer;
       }
       &.pre-month,
       &.next-month {
@@ -712,15 +705,20 @@ $icon_right: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
 .pc-calendar {
   // width: 360px;
   font-size: 10px;
-  .current-time {
-    font-size: 1.4em;
-  }
   .change-month-area {
     padding: 1em 3em;
     div {
       padding: 0.6em;
       font-size: 1.4em;
       border-radius: 0.6em;
+      &.pre-month,
+      &.next-month {
+        width: 1.4em;
+        height: 1.4em;
+      }
+      &.current-time {
+        font-size: 1.4em;
+      }
       &.cur-month {
         margin: 0 1em;
       }

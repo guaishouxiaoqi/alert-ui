@@ -56,7 +56,7 @@ alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.
     - 参数 svgType
     - svgType 定义 loading 样式目前有（line、point）两种，默认是原点形式,line 为半圆形式
     - 参数 size
-    - size 定义 loading 图大小,目前支持三种 small、middle、large ，默认为 middle
+    - size 定义 loading 图大小,目前支持 mini、small、middle、large、extral ，默认为 middle
     - 参数 pointColor 和参数 pointType
     - pointColor 和 pointType 定义 loading 的颜色和样式显示，当 svgType='point'时，这两个此参数可用,其中 pointColor：目前支持 default、gray、dark、linear，默认是 default，pointType：目前支持 small、middle、large、ease、linear，默认为 middle
 

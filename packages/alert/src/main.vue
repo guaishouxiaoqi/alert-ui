@@ -6,13 +6,14 @@
          @click="hide">
       <div class='main'
            @click.stop>
-        <span :class="type">{{message}}</span>
+        <span :class="[type,{'is-pc':!isMobile}]">{{message}}</span>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import { checkDevice } from "@/common/tool";
 export default {
   name: "alert",
   props: [],
@@ -27,7 +28,8 @@ export default {
         default: "default-item",
         scale: "scale-item"
       },
-      animateType: "default"
+      animateType: "default",
+      isMobile: null
     };
   },
   watch: {},
@@ -37,6 +39,9 @@ export default {
     }
   },
   methods: {
+    checkDevice() {
+      this.isMobile = checkDevice();
+    },
     hide() {
       this.isShow = false;
     },
@@ -45,12 +50,36 @@ export default {
       setTimeout(() => {
         this.hide();
       }, this.time);
+    },
+    addResizeEvent() {
+      this.checkDevice();
+      if (window.addEventListener) {
+        window.addEventListener("resize", this.checkDevice);
+      } else if (window.attachEvent) {
+        window.attachEvent("resize", this.checkDevice);
+      } else {
+        window.onresize = this.checkDevice;
+      }
+    },
+    removeResizeEvent() {
+      if (window.removeEventListener) {
+        window.removeEventListener("resize", this.checkDevice);
+      } else if (window.detachEvent) {
+        window.detachEvent("resize", this.checkDevice);
+      } else {
+        window.onresize = null;
+      }
     }
   },
-  created() {},
+  created() {
+    this.addResizeEvent();
+  },
   mounted() {},
   activated() {},
   deactivated() {},
+  beforeDestroy() {
+    this.removeResizeEvent();
+  },
   destroyed() {}
 };
 </script>
@@ -82,6 +111,11 @@ export default {
       }
       &.success {
         color: #0bee1e;
+      }
+      &.is-pc {
+        padding: 14px 18px;
+        font-size: 14px;
+        border-radius: 6px;
       }
     }
   }

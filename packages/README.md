@@ -54,7 +54,7 @@ this.$confirm({
 
 - 参数 size
 
-  - size 定义 loading 图大小,目前支持三种 small、middle、large ，默认为 middle
+  - size 定义 loading 图大小,目前支持 mini、small、middle、large、extral ，默认为 middle
 
 - 参数 pointColor 和参数 pointType
 
@@ -119,7 +119,7 @@ this.$confirm({
 - 参数 maxRate（可选参数）
   - maxRate 滑块最大滑动百分比,默认为 100，即滑块滑到最大为 100，此参数范围为（0-100），并且此参数不能小于 trackData 中的 maxNum,
 - 参数 showRange（可选参数）
-  - showRange 是否显示滑动滑动的百分比，0%-100%
+  - showRange 是否显示滑动滑动的百分比(0%-100%)，Boolean 类型，默认 true
 - 参数 response（可选参数）
   - response 用于控制回调函数 changeRate 是否携带参数 trackData，Boolean 类型，默认 false
 - 回调函数 changeRate

@@ -48,7 +48,7 @@
   </div>
 </template>
 <script>
-import { setTimeout } from "timers";
+import { checkDevice } from "@/common/tool";
 export default {
   name: "tracks",
   props: {
@@ -146,11 +146,7 @@ export default {
   },
   methods: {
     checkDevice() {
-      let ua = navigator.userAgent;
-      let ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
-      let isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
-      let isAndroid = ua.match(/(Android)\s+([\d.]+)/);
-      this.isMobile = isIphone || isAndroid;
+      this.isMobile = checkDevice();
     },
     // PC
     initMouseEvent() {
