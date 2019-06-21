@@ -92,7 +92,7 @@ export default {
       setLeft1: 0,
       moveLeft1: 0,
       isMobile: "",
-      preState: "null"
+      resizeNum: 1 // 记录resize变化，用于强制更新数据，兼容pc页面上无法及时获取到对应dom元素的宽度
     };
   },
   computed: {
@@ -100,11 +100,10 @@ export default {
       return this.$refs.slide;
     },
     trankW() {
-      if (this.isMobile != this.preState) {
-        // 处理isMobile变化后，此处不更新问题
-        this.preState = this.isMobile;
-        return (this.showTrack && this.moveDiv.clientWidth) || 0;
-      }
+      // 处理isMobile变化后，此处不更新问题
+      return (
+        this.resizeNum && ((this.showTrack && this.moveDiv.clientWidth) || 0)
+      );
     },
     // PC
     rate() {
@@ -116,7 +115,8 @@ export default {
       return this.defDomW * (this.trackData.maxNum / num);
     },
     tranksW() {
-      return this.$refs.tranks.clientWidth || 16;
+      // 处理resize变化后此处不更新
+      return (this.resizeNum && this.$refs.tranks.clientWidth) || 16;
     },
     // H5
     defW() {
@@ -260,6 +260,7 @@ export default {
       this.$emit("changeRate", this.trackD);
     },
     initEventFun() {
+      this.resizeNum++;
       this.checkDevice();
       setTimeout(() => {
         if (this.isMobile) {
