@@ -2,8 +2,9 @@ import Confirm from './confirm';
 import Alert from './alert';
 import Loading from './loading';
 import Calendar from './calendar';
+import Tracks from './tracks';
 import PopBar from './directive/popbar';
-let arr = [Confirm, Alert, Loading, Calendar];
+let arr = [Confirm, Alert, Loading, Calendar, Tracks];
 let direct = {
   pop: PopBar
 };
@@ -20,10 +21,11 @@ const install = function(Vue) {
   });
 };
 export default {
-  version: '1.1.19',
+  version: '1.1.23',
   Alert,
   Confirm,
   Loading,
   Calendar,
+  Tracks,
   install
 };

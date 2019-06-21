@@ -91,3 +91,36 @@ this.$confirm({
 
 - 回调函数 handleSelect，需设置 canSelected 为 true
 - handleSelect 回调函数用于返回点后日期后返回对应的选择日期区间数组
+
+- v1.1.23 版本新增 tracks 组件
+
+新增 tracks 日历组件，在需要的页面添加组件
+
+```bash
+<tracks></tracks>
+```
+
+- tracks 组件的可选参数如下
+
+- 参数 trackData（必选参数）
+
+  - trackData 滑块显示所需数据，此参数为 Object，格式为
+
+  ```bash
+    {
+      rate: 30, // 初始比例，滑块滑动后，会自动修改该值
+      maxNum: 100, // 最大可调整比例
+      type: "default" // 滑块颜色，目前提供default、message、success、warning四种
+    }
+  ```
+
+- 参数 showTrack（可选参数）
+  - showTrack 滑块是否可滑动,Boolean 类型，默认为 true
+- 参数 maxRate（可选参数）
+  - maxRate 滑块最大滑动百分比,默认为 100，即滑块滑到最大为 100，此参数范围为（0-100），并且此参数不能小于 trackData 中的 maxNum,
+- 参数 showRange（可选参数）
+  - showRange 是否显示滑动滑动的百分比，0%-100%
+- 参数 response（可选参数）
+  - response 用于控制回调函数 changeRate 是否携带参数 trackData，Boolean 类型，默认 false
+- 回调函数 changeRate
+  - changeRate 回调函数，滑块滑动后的回调函数默认该回调函数不会携带数据，滑块滑动会直接修改 trackData 中的 rate 值，如果有必要回传 trackData 值，可添加 response 为 true。
