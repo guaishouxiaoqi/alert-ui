@@ -5,19 +5,6 @@
 基于 Vue cli3 库模式搭建组件库
 alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.1 版本新添加了全局 loading 组件，可以实现两种不同风格 loading，可以根据需求定制一些简单 loading 样式，在 1.1.16 版本中新增 calendar 组件,在 1.1.23 版本新增 track 滑块组件
 
-### alert-demo 的引入和使用方式
-
-```bash
-npm install alert-demo
-```
-
-### 在 main.js 中引入或则在需要的地方引入
-
-```bash
-import AlertDemo from 'alert-demo'
-Vue.use(AlertDemo)
-```
-
 ### 详细使用说明：
 
 - alert 提示框使用说明
