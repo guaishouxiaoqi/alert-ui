@@ -10,6 +10,7 @@ module.exports = {
   outputDir: 'lib',
   lintOnSave: false,
   filenameHashing: false, // 生成hash文件,默认true
+  productionSourceMap: false, // 打包后是否生成.map文件（该文件用于确认单页面中报错时，定位到错误的代码的位置）
   runtimeCompiler: false,
   // 本项目中的packages为打包发布npm文件夹，所有知识webpack配置
   // configureWebpack: config => {

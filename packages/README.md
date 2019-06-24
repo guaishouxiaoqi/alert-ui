@@ -110,7 +110,8 @@ this.$confirm({
     {
       rate: 30, // 初始比例，滑块滑动后，会自动修改该值
       maxNum: 100, // 最大可调整比例
-      type: "default" // 滑块颜色，目前提供default、message、success、warning四种
+      type: "default", // 滑块颜色，目前提供default、message、success、warning四种
+      trackType: "" // 滑块样式（可选参数），滑块默认为圆形，目前提供rectangle、square两种
     }
   ```
 

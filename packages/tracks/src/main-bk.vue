@@ -1,30 +1,49 @@
 <template>
-  <div class="range-container"
-       @click.stop
-       @touchmove.stop>
-    <div ref="tranks"
-         :class="['mouse-tranks',{'pointer' : showTrack,'is-h5':isMobile}]">
-      <i :class="['default-line',trackData.type,{'is-h5': isMobile}]"
-         @mousedown="handleChange"
-         @click.stop="handleClick"
-         ref="defaultW"></i>
-      <i :class="['move-left',trackData.type,{'is-h5': isMobile}]"
-         :style="{'width':moveLeft}"
+  <div class="range-container-h5"
+       v-if="isMobile">
+    <div class="range-tranks">
+      <i :class="['default-line',trackData.type]"
+         ref="defaultW"
+         @click.stop="handleClick"></i>
+      <i :class="['offset-line',trackData.type]"
          ref="moveW"
-         @mousedown="handleChange"
+         :style="{'width':moveLeft1}"
          @click.stop="handleClick"></i>
       <div ref="slide"
            v-if="showTrack"
-           :style="{'left':styleLeft}"
-           :class="['slide',{'mover':isDown},slideClass, trackData.trackType]"
-           @mousedown.stop="down"
+           id="slide"
+           class="move-trank"
+           :style="{'left':setLeft1}"
            @touchstart.stop="touchStart"
            @touchmove.stop="touchMove"
            @touchend.stop="touchEnd">
-        <i :class="[trackData.type]"></i>
+        <i></i>
       </div>
     </div>
-    <div :class="['range',trackType,{'is-h5': isMobile}]"
+    <div class="range-rate"
+         v-if="showRange">{{curRate}}%</div>
+  </div>
+  <div class="range-container-pc"
+       v-else>
+    <div ref="tranks"
+         :class="['mouse-tranks',{'pointer' : showTrack}]">
+      <i :class="['common',trackData.type]"
+         @mousedown="handleChange"
+         ref="defaultW"></i>
+      <i :class="['move-left',trackData.type]"
+         :style="{'width':moveLeft}"
+         ref="moveW"
+         @mousedown="handleChange"></i>
+      <div ref="slide"
+           v-if="showTrack"
+           id="slide"
+           :style="{'left':styleLeft}"
+           :class="['slide',{'mover':isDown}]"
+           @mousedown.stop="down">
+        <i :class="trackData.type"></i>
+      </div>
+    </div>
+    <div class="range"
          v-if="showRange">{{trackData.rate + '%'}}</div>
   </div>
 </template>
@@ -53,9 +72,6 @@ export default {
     response: {
       type: Boolean,
       default: false
-    },
-    trackType: {
-      default: "circle"
     }
   },
   data() {
@@ -73,14 +89,13 @@ export default {
       offsetLeft: 0,
       left1: 0,
       left2: 0,
+      setLeft1: 0,
+      moveLeft1: 0,
       isMobile: "",
       resizeNum: 1 // 记录resize变化，用于强制更新数据，兼容pc页面上无法及时获取到对应dom元素的宽度
     };
   },
   computed: {
-    slideClass() {
-      return this.isMobile ? "is-h5" : "is-pc";
-    },
     moveDiv() {
       return this.$refs.slide;
     },
@@ -168,7 +183,7 @@ export default {
       this.styleLeft = trankL + "px";
     },
     down(event) {
-      if (this.showTrack && !this.isMobile) {
+      if (this.showTrack) {
         let moveDiv = this.moveDiv;
         this.isDown = true;
         this.m_down_x = event.clientX;
@@ -199,7 +214,7 @@ export default {
       this.$emit("changeRate", this.trackD);
     },
     handleChange(event) {
-      if (this.showTrack && !this.isMobile) {
+      if (this.showTrack) {
         let left = this.moveDiv.offsetLeft;
         let w =
           event.layerX - left > 0
@@ -212,8 +227,8 @@ export default {
     },
     // H5
     initLeft() {
-      this.styleLeft = this.numW + "px";
-      this.moveLeft = this.numW + this.trankW / 2 + "px";
+      this.setLeft1 = this.numW + "px";
+      this.moveLeft1 = this.numW + this.trankW / 2 + "px";
     },
     initOffset() {
       this.offsetLeft = this.numW;
@@ -293,7 +308,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.range-container {
+.range-container-pc {
   display: flex;
   align-items: center;
   .mouse-tranks {
@@ -301,18 +316,14 @@ export default {
     width: 100%;
     flex: 1;
     margin: 20px 0;
-    &.is-h5 {
-      margin: rem(40) 0;
-    }
     cursor: default;
     &.pointer {
       cursor: pointer;
     }
     i {
       border-radius: 3px;
-      height: 6px;
-      &.is-h5 {
-        height: rem(12);
+      &.common {
+        height: 6px;
       }
       &.default {
         background-color: #dae0e6;
@@ -328,9 +339,7 @@ export default {
       }
       &.move-left {
         width: 0;
-        &.is-h5 {
-          height: rem(12);
-        }
+        height: 6px;
         position: absolute;
         left: 0px;
         top: 0;
@@ -350,8 +359,20 @@ export default {
     }
     .slide {
       position: absolute;
+      width: 16px;
+      height: 22px;
+      top: -8px;
       left: 0px;
       transition: transform 0.1s;
+      cursor: move; /* fallback if grab cursor is unsupported */
+      cursor: grab;
+      cursor: -moz-grab;
+      cursor: -webkit-grab;
+      &:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+      }
       i {
         width: 16px;
         height: 16px;
@@ -364,8 +385,7 @@ export default {
         background: #ffffff;
         border-radius: 8px;
         user-select: none;
-        border-width: 1px;
-        border-style: solid;
+        border: 2px solid transparent;
         &.default {
           border-color: rgba(24, 25, 26, 1);
         }
@@ -379,62 +399,9 @@ export default {
           border-color: #f02727;
         }
       }
-      &.is-h5 {
-        width: rem(48);
-        height: rem(48);
-        top: rem(-18);
-        i {
-          width: rem(48);
-          height: rem(48);
-          border-radius: rem(24);
-          margin-left: rem(-24);
-          margin-top: rem(-24);
-          border-width: rem(4);
-        }
-        &.rectangle {
-          width: rem(80);
-          i {
-            width: rem(80);
-            margin-left: rem(-40);
-            border-radius: rem(40);
-          }
-        }
-        &.square {
-          i {
-            border-radius: rem(6);
-          }
-        }
-      }
-      &.is-pc {
-        width: 16px;
-        height: 22px;
-        top: -8px;
-        cursor: move; /* fallback if grab cursor is unsupported */
-        cursor: grab;
-        cursor: -moz-grab;
-        cursor: -webkit-grab;
-        &:active {
-          cursor: grabbing;
-          cursor: -moz-grabbing;
-          cursor: -webkit-grabbing;
-        }
-        &:hover {
-          transition: transform 0.4s;
-          transform: scale(1.3);
-        }
-        &.rectangle {
-          width: 36px;
-          i {
-            width: 36px;
-            margin-left: -18px;
-            border-radius: 18px;
-          }
-        }
-        &.square {
-          i {
-            border-radius: 3px;
-          }
-        }
+      &:hover {
+        transition: transform 0.4s;
+        transform: scale(1.3);
       }
     }
   }
@@ -445,11 +412,74 @@ export default {
     width: 30px;
     color: rgba(24, 25, 26, 1);
     line-height: 18px;
-    &.is-h5 {
-      width: rem(60);
-      font-size: rem(28);
-      margin-left: rem(12);
+  }
+}
+.range-container-h5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  .range-tranks {
+    position: relative;
+    padding: rem(14) 0;
+    width: 100%;
+    flex: 1;
+    .default-line {
+      position: relative;
+      width: 100%;
+      height: rem(10);
+      border-radius: rem(5);
+      &.default {
+        background-color: #dae0e6;
+      }
+      &.message {
+        background-color: rgba(204, 230, 255, 1);
+      }
+      &.success {
+        background-color: #b3f0c5;
+      }
+      &.warning {
+        background-color: #ebb6b6;
+      }
     }
+    .offset-line {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: rem(5);
+      height: rem(10);
+      &.default {
+        background-color: #3d454d;
+      }
+      &.message {
+        background-color: rgba(0, 128, 255, 1);
+      }
+      &.success {
+        background-color: #0df352;
+      }
+      &.warning {
+        background-color: #f02727;
+      }
+    }
+    .move-trank {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: rem(88);
+      height: rem(36);
+      box-sizing: content-box;
+      background: #ffffff;
+      border-radius: rem(18);
+      border: 1px solid rgba(205, 224, 230, 0.8);
+      box-shadow: 0 1px 4px 0 rgba(91, 91, 91, 0.5);
+    }
+  }
+  .range-rate {
+    width: rem(80);
+    margin-left: rem(2);
+    font-size: rem(30);
+    color: rgba(24, 25, 26, 1);
   }
 }
 </style>

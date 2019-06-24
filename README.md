@@ -1,9 +1,22 @@
-# [alert-demo](https://www.npmjs.com/package/alert-demo) [![Build Status][travis-image]][npm-url]
+# [alert-demo](https://github.com/guaishouxiaoqi/alert-ui) [![Build Status][travis-image]][github-url]
 
-## alert-demo 实现基本的全局 alert、confirm、loading 弹层，新增 calendar 组件、tracks 滑块组件
+## alert-demo 实现基本的全局 alert、confirm、loading 弹层，新增 calendar 日历组件、track 滑块组件
 
 基于 Vue cli3 库模式搭建组件库
-alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.1 版本新添加了全局 loading 组件，可以实现两种不同风格 loading，可以根据需求定制一些简单 loading 样式，在 1.1.16 版本中新增 calendar 组件,在 1.1.23 版本新增 track 滑块组件
+alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.1 版本新添加了全局 loading 组件，可以实现两种不同风格 loading，可以根据需求定制一些简单 loading 样式，在 1.1.16 版本中新增 calendar 日历组件,在 1.1.23 版本新增 track 滑块组件
+
+### alert-demo 的引入和使用方式
+
+```bash
+npm install alert-demo
+```
+
+### 在 main.js 中引入或则在需要的地方引入
+
+```bash
+import AlertDemo from 'alert-demo'
+Vue.use(AlertDemo)
+```
 
 ### 详细使用说明：
 
@@ -91,7 +104,14 @@ alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.
   在需要的页面添加 tracks 组件
 
   ```bash
-  <tracks></tracks>
+  <tracks
+    :trackData="trackData"
+    :showTrack="true"
+    maxRate="100"
+    :showRange="true"
+    :response="true"
+    @changeRate="changeRate"
+  ></tracks>
   ```
 
   tracks 组件的可选参数如下
@@ -104,7 +124,8 @@ alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.
       {
         rate: 30, // 初始比例，滑块滑动后，会自动修改该值
         maxNum: 100, // 最大可调整比例
-        type: "default" // 滑块颜色，目前提供default、message、success、warning四种
+        type: "default", // 滑块颜色，目前提供default、message、success、warning四种
+        trackType: "" // 滑块样式（可选参数），滑块默认为圆形，目前提供rectangle、square两种
       }
     ```
 
@@ -113,7 +134,7 @@ alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.
   - 参数 maxRate（可选参数）
     - maxRate 滑块最大滑动百分比,默认为 100，即滑块滑到最大为 100，此参数范围为（0-100），并且此参数不能小于 trackData 中的 maxNum,
   - 参数 showRange（可选参数）
-    - showRange 是否显示滑动滑动的百分比，0%-100%
+    - showRange 是否显示滑动滑动的百分比(0%-100%)，Boolean 类型，默认 true
   - 参数 response（可选参数）
     - response 用于控制回调函数 changeRate 是否携带参数 trackData，Boolean 类型，默认 false
   - 回调函数 changeRate
@@ -148,4 +169,4 @@ alert-demo 提供 alert 和 confirm 两种方式的全局提醒提醒，在 1.1.
 ```
 
 [travis-image]: https://travis-ci.org/wieringen/tinyscrollbar.svg?branch=master
-[npm-url]: https://www.npmjs.com/package/alert-demo
+[github-url]: https://github.com/guaishouxiaoqi/alert-ui#readme
