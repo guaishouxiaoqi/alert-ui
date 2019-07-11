@@ -1204,10 +1204,10 @@ ajv@^6.1.0, ajv@^6.5.5, ajv@^6.9.1:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-alert-demo@^1.1.19:
-  version "1.1.19"
-  resolved "https://registry.yarnpkg.com/alert-demo/-/alert-demo-1.1.19.tgz#44e8c5b442d681ef482eca4461e6c848b2884c07"
-  integrity sha512-W3SFy+mY+KxoMfP1HQuqU6HB/cg0ftSuq7Sd5CZq05sTJfWApHW5CCaip35GLz2ledtFf3Y2bq9FKx9ORBkXJA==
+alert-demo@^1.1.18:
+  version "1.1.28"
+  resolved "https://registry.yarnpkg.com/alert-demo/-/alert-demo-1.1.28.tgz#77121fe4914349488d76af5ae947851860ea4695"
+  integrity sha512-SYdK4kNqDKv43ICuBBKNAA0fSRVlyIi03R2/JQX39Mz3JNFr3oUj5VCe7abEpObobUSWXR1kkc7eSQEd7HlVSg==
   dependencies:
     vue "^2.6.10"
 
@@ -4940,9 +4940,9 @@ locate-path@^3.0.0:
     path-exists "^3.0.0"
 
 lodash.defaultsdeep@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.0.tgz#bec1024f85b1bd96cbea405b23c14ad6443a6f81"
-  integrity sha1-vsECT4WxvZbL6kBbI8FK1kQ6b4E=
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
+  integrity sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==
 
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
